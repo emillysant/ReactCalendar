@@ -4,7 +4,7 @@ import Counter from "./Counter";
 import { Link } from "react-router-dom"; 
 
 const README_PATH =
-  "https://raw.githubusercontent.com/Jobsity/ReactChallenge/main/README.md";
+  "https://git.jobsity.com/jobsity/ReactChallenge/-/wikis/React-Challenge-Instructions.md";
 
 function Readme() {
   const [md, setMd] = useState(null);
