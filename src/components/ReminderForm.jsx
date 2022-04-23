@@ -5,6 +5,9 @@ import moment from 'moment'
 const propTypes = {
   onSave: PropTypes.func.isRequired,
   text: PropTypes.string,
+
+  city: PropTypes.string,
+
   placeholder: PropTypes.string,
   editing: PropTypes.bool,
   newTodo: PropTypes.bool
@@ -14,7 +17,10 @@ const defaultProps = {
   text: '',
   category: 'home',
   startTime: `${moment().format('HH')}:${moment().minutes()}`,
-  endTime: `${moment().add(1, 'hours').format('HH')}:${moment().minutes()}`
+
+  endTime: `${moment().add(1, 'hours').format('HH')}:${moment().minutes()}`,
+  city: ''
+
 }
 
 class ReminderForm extends React.Component{
@@ -25,7 +31,10 @@ class ReminderForm extends React.Component{
       category: this.props.category,
       startTime: this.props.startTime,
       endTime: this.props.endTime,
-      date: this.props.date    
+
+      date: this.props.date,
+      city: this.props.city
+
     }
     this.toggleIsActive = this.toggleIsActive.bind(this)
   }
@@ -38,9 +47,10 @@ class ReminderForm extends React.Component{
   handleSubmit = event => {
     event.preventDefault()
 
-    const { category } = this.state;
-
+    const { category, city } = this.state;
     const updatedReminder = {
+      city,
+
       category,
       updateTime: moment(),
       newReminder: false,
@@ -114,6 +124,15 @@ class ReminderForm extends React.Component{
           value={this.props.text}
           onChange={this.props.onChange}
         />
+
+         <input
+          type="text"
+          value={this.props.city}
+          placeholder="city"
+          autoFocus={true}
+          onChange={this.props.onCityChange}
+        />
+
         <select onChange={this.props.onCategoryChange} value={this.props.category}>
           <option value="home">Home</option>
           <option value="work">Work</option>
