@@ -30,7 +30,9 @@ class CalendarMonth extends React.Component {
     
     handleClick( weekIndex, weekdayIndex, weekdayDate){
         if(moment() > weekdayDate) return
+
         this.props.actions.addReminder(weekIndex, weekdayIndex, weekdayDate)
+
     }
 
     renderWeeks(week, index){
@@ -51,7 +53,9 @@ class CalendarMonth extends React.Component {
                                 reminder={reminder}
                                 weekIndex={week.index}
                                 weekdayIndex={weekday.index}
+
                                 date={weekday.date}
+
                                 editReminder={actions.editReminder}
                                 deleteReminder={actions.deleteReminder}
                             />
